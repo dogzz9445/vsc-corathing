@@ -1,0 +1,24 @@
+{
+  "name": "@rubendew/vsch-sidebar",
+  "version": "0.1.1",
+  "description": "Sidebar",
+  "main": "index.js",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "14.1.0",
+    "nodemon": "2.0.20",
+    "rollup": "2.79.1",
+    "rollup-plugin-generate-html-template": "^1.7.0",
+    "rollup-plugin-scss": "^3.0.0",
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "dependencies": {
+    "mustache": "^4.1.0",
+    "vsch-core": "^0.1.2"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "nodemon --watch \"src/**/**\" --ext \"js,html,scss\" --exec npm run build"
+  }
+}

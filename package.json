@@ -1,0 +1,18 @@
+{
+  "name": "@rubendew/vsch-root",
+  "private": true,
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "devDependencies": {
+    "@lerna-lite/cli": "1.11.3",
+    "@lerna-lite/exec": "^1.11.3"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "resolutions": {
+    "@types/react": "18.0.12",
+    "@types/react-dom": "18.0.5"
+  }
+}

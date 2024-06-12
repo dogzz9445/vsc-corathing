@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sidebar</title>
+  <link rel="stylesheet" href="sidebar-main.css">
+</head>
+
+<body>
+
+  <script id="widget-tmpl" type="x-tmpl-mustache">
+    <div id="helpText">Draggable components:</div>
+    {{#widgets}}
+      <article data-id="{{id}}" class="widget" draggable="true">
+        <h4>{{title}}</h4>
+        <p>{{subtitle}}</p>
+      </article>
+    {{/widgets}}
+  </script>
+  <script id="layout-tmpl" type="x-tmpl-mustache">
+    {{#layouts}}
+      <button class="open-layout" data-name="{{title}}" data-uid="{{uid}}">Open {{title}}</button>
+    {{/layouts}}
+  </script>
+  <div class="row">
+    <h1 id="heading-layouts" class="link">Layouts</h1>
+    <button class="icon self-end align-self-center" id="action-add-layout">+</button>
+  </div>
+  <section id="layouts">
+  </section>
+  <h1 id="heading-widgets" class="link">Widgets</h1>
+  <section id="widgets">
+  </section>
+</body>
+
+</html>

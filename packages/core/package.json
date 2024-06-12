@@ -1,0 +1,121 @@
+{
+	"name": "vsch-core",
+	"displayName": "Home",
+	"description": "Homecoming dashboard for VSCode",
+	"version": "0.1.2",
+	"publisher": "rubendew",
+	"icon": "assets/logo_vschome.white.min.png",
+	"engines": {
+		"vscode": "^1.53.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onStartupFinished",
+		"onCommand:vsch.openMainView"
+	],
+	"main": "./dist/extension.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/githrdw/vsc-home"
+	},
+	"contributes": {
+		"commands": [
+			{
+				"command": "vsch.openMainView",
+				"title": "Open VSC-Home dashboard"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "home",
+					"title": "Home",
+					"icon": "./assets/logo_vschome.white.min.png"
+				}
+			]
+		},
+		"views": {
+			"home": [
+				{
+					"type": "webview",
+					"id": "vsch.openSidebarView",
+					"name": "Settings",
+					"contextualTitle": "Home"
+				}
+			]
+		},
+		"configuration": {
+			"title": "Home",
+			"properties": {
+				"home.oauthAgent": {
+					"type": "string",
+					"default": "wss://vsch.hrdw.nl/oauth",
+					"description": "To make accessing serveral online services possible, this OAuth agent can be used to authenticate."
+				},
+				"home.openOnStartup": {
+					"type": "string",
+					"default": "whenBlank",
+					"enum": [
+						"always",
+						"whenBlank",
+						"whenNoWorkspace",
+						"never"
+					],
+					"enumDescriptions": [
+						"Opens dashboard always when opening a new VS Code window",
+						"Opens dashboard when opening a VS Code window where no files are open",
+						"Opens dashboard when opening a VS Code window where no workspace is configured",
+						"Only opens dashboard by hand from the sidebar or command prompt"
+					],
+					"description": "Defines when the dashboard should automatically open."
+				},
+				"home.configDirectory": {
+					"type": "string",
+					"default": "",
+					"markdownDescription": "Specifies the folder path containing the Home configuration files to use. `%APPDATA%/vsch-home` when empty."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run package",
+		"compile": "webpack --config ./build/node-extension.webpack.config.js",
+		"watch": "webpack --watch --config ./build/node-extension.webpack.config.js",
+		"package": "webpack --mode production --devtool hidden-source-map --config ./build/node-extension.webpack.config.js",
+		"test-compile": "tsc -p ./",
+		"test-watch": "tsc -watch -p ./",
+		"pretest": "yarn run test-compile && yarn run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"extensionDependencies": [
+		"vscode.git"
+	],
+	"dependencies": {
+		"@rubendew/vsch-sidebar": "^0.1.1",
+		"@rubendew/vsch-ui": "^0.1.2",
+		"@types/ws": "^8.5.3",
+		"ws": "^8.7.0"
+	},
+	"devDependencies": {
+		"@types/glob": "8.0.0",
+		"@types/mocha": "10.0.0",
+		"@types/node": "^14.14.25",
+		"@types/vscode": "1.53.0",
+		"@typescript-eslint/eslint-plugin": "5.39.0",
+		"@typescript-eslint/parser": "5.39.0",
+		"bufferutil": "^4.0.6",
+		"eslint": "8.25.0",
+		"glob": "^8.0.3",
+		"mocha": "10.0.0",
+		"ts-loader": "9.4.1",
+		"typescript": "4.8.4",
+		"utf-8-validate": "^5.0.9",
+		"vscode-test": "^1.4.1",
+		"webpack": "5.74.0",
+		"webpack-cli": "4.10.0"
+	},
+	"gitHead": "1a58433298ec7ca1e13bf2a426004673bd1bf8af"
+}
