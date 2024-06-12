@@ -1,3 +1,5 @@
+# This is Copy from [githrdw/vsc-home](https://github.com/githrdw/vsc-home)
+
 <p align="center">
   <img src="packages/core/assets/logo_vschome.white.min.png" height="56" alt="VSCH Logo" />
 </p>
